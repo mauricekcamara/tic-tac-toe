@@ -1,0 +1,21 @@
+#board {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #42f5f5;
+    padding: 15px;
+}
+
+.row {
+    background-color: #42a7f5;
+    border: 1px solid;
+    padding: 15px;
+    /*margin: 10px;*/
+    text-align: center;
+    font-size: 40px;
+}
+
+h1 {
+    text-align: center;
+    background-color: #42a7f5;
+    border: 1px solid;
+}
