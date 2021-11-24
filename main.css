@@ -5,7 +5,7 @@
     padding: 15px;
 }
 
-.row {
+.box {
     background-color: #42a7f5;
     border: 1px solid;
     padding: 15px;
@@ -16,6 +16,4 @@
 
 h1 {
     text-align: center;
-    background-color: #42a7f5;
-    border: 1px solid;
 }

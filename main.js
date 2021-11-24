@@ -1,29 +1,15 @@
-// Initialize players
-const player1 = {
-    screenName: 'Player 1',
-    symbol: 'X',
-    victories: 0,
-};
+// Initialize player
+let currentPlayer = 'X';
 
-const player2 = {
-    screenName: 'Player 2',
-    symbol: 'O',
-    victories: 0,
-};
+// Select cells in the grid
+let box = document.querySelectorAll('.box');
 
-// Function checking player turn
-function checkTurn() {}
+// Array keeping track of played cells
+const state = ['', '', '', '', '', '', '', '', ''];
 
-// Main game logic
-const grid = document.querySelectorAll('.row');
-let counter = 0;
-for (let i = 0; i < grid.length; i++) {
-    grid[i].addEventListener('click', function (event) {
-        event.target.innerHTML = 'X';
-        counter++;
-
-        if (counter == grid.length) {
-            alert('Game Over');
-        }
-    });
-}
+box.forEach((clickedBox) =>
+    addEventListener('click', function (event) {
+        const clickedBoxIndex = event.target;
+    })
+);
+console.log(clickedBoxIndex);
