@@ -1,15 +1,165 @@
-// Initialize player
-let currentPlayer = 'X';
+// Initialize players
+const Player1 = {
+    userName: 'Player 1',
+    symbol: 'X',
+    wins: 0,
+};
+
+const Player2 = {
+    userName: 'Player 2',
+    symbol: 'O',
+    wins: 0,
+};
+
+// Array keeping track of played cells
+let state = ['', '', '', '', '', '', '', '', ''];
+
+// Select winning message h3
+let winMessage = document.querySelector('#win-message');
+
+// Counter keeping track of player turn
+let playerTurn = 1;
 
 // Select cells in the grid
 let box = document.querySelectorAll('.box');
 
-// Array keeping track of played cells
-const state = ['', '', '', '', '', '', '', '', ''];
+// Changing the cell background color on mouse over
+for (let i = 0; i < box.length; i++) {
+    box[i].addEventListener('mouseenter', function (event) {
+        event.target.style.backgroundColor = '#D3D3D3';
+    });
+}
+// Reverting the cell background color on mouse leave
+for (let i = 0; i < box.length; i++) {
+    box[i].addEventListener('mouseleave', function (event) {
+        event.target.style.backgroundColor = '';
+    });
+}
 
-box.forEach((clickedBox) =>
-    addEventListener('click', function (event) {
-        const clickedBoxIndex = event.target;
-    })
-);
-console.log(clickedBoxIndex);
+// Select player win count
+let player1WinCount = document.querySelector('.win1');
+let player2WinCount = document.querySelector('.win2');
+
+let gameWon = false;
+
+// Main game logic
+for (let i = 0; i < box.length; i++) {
+    box[i].addEventListener('click', function (event) {
+        const data = box[i].dataset.index;
+        if (event.target.innerHTML == '') {
+            if (playerTurn % 2 != 0) {
+                event.target.innerHTML = Player1.symbol;
+                state[data] = Player1.symbol;
+            } else {
+                event.target.innerHTML = Player2.symbol;
+                state[data] = Player2.symbol;
+            }
+            playerTurn++;
+            // Checking winning conditions
+            const player1Wins = (currentValue) =>
+                currentValue == Player1.symbol;
+            const player2Wins = (currentValue) =>
+                currentValue == Player2.symbol;
+
+            if (state.slice(0, 3).every(player1Wins)) {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state.slice(0, 3).every(player2Wins)) {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state.slice(3, 6).every(player1Wins)) {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state.slice(3, 6).every(player2Wins)) {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state.slice(6, 9).every(player1Wins)) {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state.slice(6, 9).every(player2Wins)) {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state[0] == 'X' && state[3] == 'X' && state[6] == 'X') {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state[0] == 'O' && state[3] == 'O' && state[6] == 'O') {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state[1] == 'X' && state[4] == 'X' && state[7] == 'X') {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state[1] == 'O' && state[4] == 'O' && state[7] == 'O') {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state[2] == 'X' && state[5] == 'X' && state[8] == 'X') {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state[2] == 'O' && state[5] == 'O' && state[8] == 'O') {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state[0] == 'X' && state[4] == 'X' && state[8] == 'X') {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state[0] == 'O' && state[4] == 'O' && state[8] == 'O') {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (state[2] == 'X' && state[4] == 'X' && state[6] == 'X') {
+                winMessage.innerHTML = `${Player1.userName} has won!`;
+                Player1.wins++;
+                player1WinCount.innerHTML = Player1.wins;
+                gameWon = true;
+            } else if (state[2] == 'O' && state[4] == 'O' && state[6] == 'O') {
+                winMessage.innerHTML = `${Player2.userName} has won!`;
+                Player2.wins++;
+                player2WinCount.innerHTML = Player2.wins;
+                gameWon = true;
+            } else if (gameWon == false && !state.includes('')) {
+                winMessage.innerHTML = `It's a draw!`;
+            }
+        }
+    });
+}
+
+// Game reset
+const reset = document.querySelector('.reset');
+reset.addEventListener('click', function (event) {
+    location.reload();
+});
+
+// New Game
+const newGame = document.querySelector('.new-game');
+newGame.addEventListener('click', function (event) {
+    document.querySelectorAll('.box').forEach((box) => (box.innerHTML = ''));
+    state = ['', '', '', '', '', '', '', '', ''];
+    playerTurn = 1;
+    gameWon = false;
+    winMessage.innerHTML = '';
+});
